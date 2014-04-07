@@ -1,6 +1,6 @@
 class Horse
 
-  attr_accessor :name, :position, :color
+  attr_accessor :name, :position
 
   #Class Vars
   @@no_of_horses=0
@@ -8,7 +8,6 @@ class Horse
   def initialize(name)
     # puts "Horse #{name} is initiated!"
     @name = name
-    @color = ""
     @position = 0
     @@no_of_horses += 1
   end
@@ -96,7 +95,6 @@ private
   end
 
 
-private
   def display_horses
     system "clear"
     puts ""
