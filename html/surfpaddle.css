@@ -1,0 +1,239 @@
+* {
+	vertical-align: top;
+}
+
+.bannerimgclass {
+	width: 100%;
+    height: 423px;
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    z-index: -9;
+}
+
+.bannerclass {
+
+}
+
+.container {
+  width: 1000px;
+  /*min-height: 1400px;*/
+  margin: 0 auto;
+  /*border: 1px solid #0033ff;*/
+}
+
+.header {
+	width: 100%;
+	height: 412px;
+	/*background-color: blue;*/
+	/*border: 1px dashed;*/
+}
+
+.head1 {
+	padding-left: 20;
+	display: inline-block;
+}
+
+.head2 {
+	padding-left: 670;
+	display: inline-block;
+}
+
+.test2 {
+	text-align: right;
+	display: inline-block;
+}
+
+.headercenter {
+	font-size: 90px;
+	font-family: Arial;
+	color: white;
+	text-align: center;
+	margin-top: 80;
+
+}
+
+
+
+
+
+.left_column {
+	width: 688px;
+	height: 800px;
+	/*background-color: purple;*/
+	/*border: 1px dashed;*/
+	display: inline-block;
+	z-index: 9;
+
+}
+
+.leftcolheader {
+	font-family: Arial;
+	font-size: 50px;
+	margin-bottom: 0;
+}
+
+.t1 {
+	/*display: inline-block;*/
+}
+
+.smallfaceclass{
+	border-radius: 15px;
+	width: 30px;
+	/*padding-top: 30;*/
+	display: inline-block;	
+}
+
+.t2 {
+	display: inline-block;
+	color: blue;
+	/*top: 0;*/
+	margin-top: 10;
+}
+
+.t3 {
+	display: inline-block;
+	/*color: blue;*/
+	/*top: 0;*/
+	margin-top: 10;
+	padding-left: 8;
+}
+
+.bluetext {
+	color: blue;
+	margin-top: 25;
+}
+
+
+.button1 {
+	background-color: gray;
+	color: white;
+	height: 30;
+	width: 160;
+	display: inline-block;
+	margin-left: 4;
+}
+
+.button2 {
+	background-color: gray;
+	color: white;
+	height: 30;
+	width: 130;
+	display: inline-block;
+	margin-left: 4;
+}
+
+.button3 {
+	background-color: cornflowerblue;
+	color: white;
+	height: 30;
+	width: 160;
+	display: inline-block;
+	margin-left: 4;
+}
+
+.buttonleft {
+	background-color: black;
+	height: 30;
+	width: 30;
+	display: inline-block;
+}
+
+.buttontext {
+	margin-left: 17px;
+	margin-top: 7px;
+	font-size: 12px;
+	display: inline-block;
+}
+
+
+.right_column {
+	width: 304px;
+	height: 800px;
+	/*background-color: purple;*/
+	/*border: 1px dashed;*/
+	display: inline-block;
+
+}
+
+
+.rightcolimages {
+	position: relative;
+	top: 40px;
+	text-align: center;
+	/*this made the image center*/
+    /*border: 1px dashed;*/
+}
+
+.rc0 {
+	color: blue;
+	margin-top: 10;
+	margin-bottom: 2;
+}
+
+.rc1 {
+	text-align: right;
+	margin-right: 11;
+	margin-top: 2;
+}
+
+.rc2 {
+	color: gray;
+	margin-top: 0;
+	margin-bottom: 30;
+}
+
+.rc3 {
+	color: blue;
+	margin-top: 25;
+	margin-bottom: 0;
+	/*border: 1px dashed;*/
+}
+
+.rightcol1 {
+	position: relative;
+	top: 40px;
+	padding-left: 10;
+}
+
+.faceclass{
+	/*text-align: center;*/
+	border-radius: 45px;
+	width: 90px;
+	/*margin: 0 auto;*/
+}
+
+
+.footer {
+	background-color: midnightblue;
+	height: 90;
+	/*position: absolute;*/
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.f1 {
+	padding-left: 40;
+	padding-top: 15;
+}
+
+.f2 {
+	display: inline-block;
+	padding-top: 2;
+	color: white;
+}
+
+.f3 {
+	display: inline-block;
+	padding-top: 2;
+	padding-left: 430;
+	color: white;
+}
+
+.logo1 {
+	/*text-align: center;*/
+	display: inline-block;
+	padding-top: 10;
+}
