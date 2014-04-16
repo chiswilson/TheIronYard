@@ -1,0 +1,18 @@
+<h4>We are creating a New Pres!</h4>
+
+<%= form_for @president do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, placeholder: "Name" %>
+  <br>
+  <%= f.label :terms %>
+  <%= f.text_field :terms, placeholder: "Terms" %>
+  <br>
+  <%= f.label :borndate %>
+  <%= f.text_field :borndate, placeholder: "Born date" %>
+  <br>
+
+
+
+  <%= f.submit "Create Pres" %>
+<% end %>
+

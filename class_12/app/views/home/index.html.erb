@@ -1,0 +1,17 @@
+<h3>My Presidents</h3>
+
+<%= link_to "Create New President", new_president_path %>
+<ul>
+  <% @presidents.each do |pres| %>
+    <li>
+      <%= pres.name %> &nbsp;
+
+      <%= link_to "Show", president_path(pres) %>
+      <%= link_to "Edit", edit_president_path(pres) %>
+      <%= link_to "Delete", president_path(pres), method: :delete %>
+
+
+    </li>  
+  <% end %>
+</ul>
+

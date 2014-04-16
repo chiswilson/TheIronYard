@@ -1,0 +1,12 @@
+<h4>This is a President</h4>
+
+<%= @president.name %> is/was his name.
+<br> 
+<%= @president.terms %> was his terms.
+<br>
+<%= @president.borndate %> was his birthdate.
+<br>
+<br>
+<%= link_to "Home", root_path %>
+<br>
+<%= link_to "Delete", president_path(@president), method: :delete %>
