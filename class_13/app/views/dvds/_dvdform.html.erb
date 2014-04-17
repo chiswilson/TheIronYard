@@ -1,0 +1,19 @@
+	
+<%= form_for @mydvd do |f| %>
+	<%= f.label :title %>
+  	<%= f.text_field :title %>
+  	<br>
+  	<%= f.label :year %>
+  	<%= f.text_field :year %>
+  	<br>
+  	<%= f.label :genre %>
+  	<%= f.text_field :genre %>
+  	<br>
+  	<br>
+  	<%= f.submit %>
+  	<!-- <button name="testbutton">Cancel</button> -->
+
+  	<a href="/dvds">
+      <input type="button" value="Cancel" />
+    </a>
+<% end %>

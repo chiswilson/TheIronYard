@@ -1,0 +1,23 @@
+&nbsp;&nbsp;<%= link_to "(Add new dvd)", new_dvd_path %>
+
+<h3>Available DVD's</h3>
+
+
+<% @mydvds.each do |dvd| %>
+
+	<div class="d1">
+		<%= dvd.title %> &nbsp; (<%= dvd.year %>) &nbsp; &nbsp; Genre: <%= dvd.genre %>
+	</div>
+	&nbsp; &nbsp; <%= link_to "Delete", dvd_path(dvd), method: :delete %>	
+    <%= link_to "Edit", edit_dvd_path(dvd) %>
+      
+    <br>
+    <br>
+<!-- 
+      <%= link_to "Show", dvd_path(dvd) %>
+      <%= link_to "Edit", edit_dvd_path(dvd) %>
+      <%= link_to "Delete", dvd_path(dvd), method: :delete %>
+ -->
+
+      
+<% end %>
