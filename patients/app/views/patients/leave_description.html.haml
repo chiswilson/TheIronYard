@@ -1,0 +1,8 @@
+%h3 Enter a description:
+
+= form_for @patient do |f|
+	= f.label :description, "Description:"
+	= f.text_field :description
+	%br
+	
+	= f.submit

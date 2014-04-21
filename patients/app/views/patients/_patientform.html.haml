@@ -1,0 +1,14 @@
+= form_for @patient do |f|
+	= f.label :name, "Name:"
+	= f.text_field :name
+	%br
+	= f.label :dateofbirth, "Date of Birth:"
+	= f.text_field :dateofbirth
+	%br
+	= f.submit
+
+	= link_to "Cancel", root_path
+
+	/ %a href="/patients"
+	/   %input type="button" value="Cancel"
+    
