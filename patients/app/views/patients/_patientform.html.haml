@@ -1,4 +1,6 @@
-= form_for @patient do |f|
+/ %h2 testing
+
+= form_for [@hospital, @patient] do |f|
 	= f.label :name, "Name:"
 	= f.text_field :name
 	%br
@@ -7,8 +9,8 @@
 	%br
 	= f.submit
 
-	= link_to "Cancel", root_path
+	= link_to "Cancel", hospital_path(@hospital)
 
-	/ %a href="/patients"
-	/   %input type="button" value="Cancel"
+/ %a href="/patients"
+/   %input type="button" value="Cancel"
     

@@ -6,20 +6,28 @@ class PatientsController < ApplicationController
 
     # gonna create a new patient
 	def new
-		@patient = Patient.new
+		@hospital = Hospital.find params[:hospital_id]
+		@patient = @hospital.patients.new
 	end
 
 	def create
-		@patient = Patient.new patient_params
+		@hospital = Hospital.find params[:hospital_id]
+		@patient = @hospital.patients.new patient_params
 		@patient.workflow_state = "waiting"
 		@patient.description = "(enter description)"
 		if @patient.save
 			flash[:notice]= "Patient added OK."
-			redirect_to root_path
+			redirect_to hospital_path(@hospital)
 		else
 		    flash[:error]= "Error adding Patient!"
 		    render :new
 		end 
+	end
+
+	def show
+		@hospital = Hospital.find params[:hospital_id]
+		@patient = Patient.find params[:id]
+
 	end
 
 	def go_to_surgery

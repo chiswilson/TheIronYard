@@ -1,4 +1,7 @@
 class Patient < ActiveRecord::Base
+  belongs_to :hospital
+  has_many :medications
+
 	validates :name, presence: true
     validates :description, presence: true, length: {minimum: 1}
 

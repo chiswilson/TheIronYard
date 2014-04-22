@@ -3,21 +3,25 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'index/' => 'home#index'
   
-  resources :patients do
+  resources :hospitals do
+    resources :patients do
 
-    collection do
-      get :sort_by_name
-      get :sort_by_location
-    end
+      collection do
+        # get :sort_by_name
+        # get :sort_by_location
+      end
 
-    member do
-      patch :go_to_xray
-      patch :go_to_surgery
-      patch :go_to_doctor
-      patch :go_to_billpay
-      patch :go_to_leaving
-      patch :go_to_patientpaid
-      get   :leave_description
+      member do
+        patch :go_to_xray
+        patch :go_to_surgery
+        patch :go_to_doctor
+        patch :go_to_billpay
+        patch :go_to_leaving
+        patch :go_to_patientpaid
+        get   :leave_description
+      end
+
+      resources :medications
     end
   end
 
