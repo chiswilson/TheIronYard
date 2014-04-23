@@ -1,0 +1,28 @@
+<h3 class="np_1">Edit Blog Post</h3>
+
+<div class="np_test1">
+	
+	<form action="/edit_blogpost/<%= @blogpost.id %>" method="post">
+      <label>Time/date:
+        <input type="text" name="blogpost[timestamp]" placeholder="<%= @blogpost.timestamp %>">
+      </label>
+      <br>
+
+		  <label>Subject:
+        <input type="text" name="blogpost[title]" placeholder="<%= @blogpost.title %>">
+      </label>
+      <br>
+		
+  		<label class="np_lab1">Message:
+  		  <textarea class="np_ta1" name="blogpost[msg]" cols="100" rows="5" placeholder="<%= @blogpost.msg %>"></textarea>
+      </label>
+      <br>
+
+      <input type="submit" value="Edit Blogpost">
+
+  		<!-- <input type="submit" value="Save"> -->
+  		<!-- <button type="button" class="btn btn-sm btn-success chisbut">Save</button>
+  		<button type="button" class="btn btn-sm btn-danger">Cancel</button> -->
+	</form>
+
+</div>

@@ -1,0 +1,74 @@
+.dib {
+	display: inline-block;
+}
+
+/********************
+FOR LISTINGS.ERB
+********************/
+
+.n1 {
+	margin-bottom: 20;
+}
+
+.newpost {
+	/*color: blue;*/
+	/*font-size: 18;*/
+	/*margin-bottom: 20;*/
+}
+
+.l0 {
+	position: relative;
+}
+
+
+.l2 {
+	display: inline-block;
+	/*color: blue;*/
+}
+
+.l4 {
+	display: inline-block;
+	/*position: absolute;*/
+	/*left: 400;*/
+	/*top: 0;*/
+}
+
+.listingbutton {
+	color: grey;
+	/*position: absolute;*/
+	/*top: 20;*/
+}
+
+/********************
+FOR NEWPOST.ERB
+********************/
+.np_1 {
+	/*margin-bottom: 30;*/
+}
+
+.np_test1 {
+	/*margin-top: 20;*/
+}
+
+.np_ta1 {
+	display: block;
+	/*margin-top: 20;*/
+}
+
+.np_lab1 {
+	display: block;
+	/*margin-top: 15;*/
+}
+
+.chisbut {
+	/*margin-top: 20;*/
+}
+
+/********************
+FOR SHOWSINGLE.ERB
+********************/
+.ss_ta1 {
+	display: block;
+	/*readonly: true;*/
+	margin-top: 20;
+}

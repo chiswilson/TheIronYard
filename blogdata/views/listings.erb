@@ -1,0 +1,57 @@
+<div class="n1">
+	<a class="newpost" href="/newpost">Create New Post...</a>
+
+</div>
+
+
+<div class="listings">
+        <div class="row">
+          <div class="col-sm-12">
+            <ul class="list-group">
+
+            	<% @blogposts.reverse_each do |post| %>
+
+            	  <div class="l0">
+            	  	<div>
+            	  		<h5>&nbsp;</h5>
+            	  	</div>
+
+            	    <div class="dib">
+            	   	    <h4><%= post[:title] %> </h4>
+            	    </div>
+
+            	    <div class="dib">
+            	    	<h6>&nbsp; &nbsp; <%= post[:timestamp]%> &nbsp; &nbsp;</h6>
+            	    </div>
+
+            	    <!-- <div class="l4"> -->
+
+                        <!-- <a href="/edit_blogpost/<%= post[:id] %>">Edit</a> -->
+
+                        
+
+                        <!-- <button type="button" class="btn btn-xs btn-default listingbutton">Edit</button> -->
+
+                        <!-- <button form="DELFORM" type="submit" class="btn btn-xs btn-default listingbutton">Delete</button> -->
+
+            	    <!-- </div> -->
+            	               	    
+            	  <li class="list-group-item"> <%= post[:msg]%> </li>
+
+                  <form class="dib" ID="DELFORM" action="/delete_blogpost/<%= post[:id] %>" method="post">
+                          <input type="hidden" name="_method" value="delete">
+                          <!-- <div style="margin:0;padding:0;display:inline-block;width:100px;">   -->
+                            <input type="submit" value="Delete">
+                          <!-- </div> -->
+                  </form>                  
+                  <button class="dib" type="button">Edit</button> 
+
+            	  </div>    
+            	     
+            	<% end %> 
+              
+            </ul>
+          </div><!-- /.col-sm-12 -->
+        </div>  
+
+</div>
