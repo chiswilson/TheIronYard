@@ -1,0 +1,6 @@
+= form_for [@patient, @doctor], url: create_doctor_patient_path(@patient) do |f|
+	= f.label :name, "Name:"
+	= f.text_field :name
+	%br
+	
+	= f.submit

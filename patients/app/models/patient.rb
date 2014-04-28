@@ -1,9 +1,14 @@
 class Patient < ActiveRecord::Base
-  belongs_to :hospital
+  
   has_many :medications
+  
+  has_many :hpconnects
+  has_many :hospitals, through: :hpconnects
+
+  has_many :doctors, as: :curable
 
 	validates :name, presence: true
-    validates :description, presence: true, length: {minimum: 1}
+  validates :description, presence: true, length: {minimum: 1}
 
   include Workflow
   workflow do

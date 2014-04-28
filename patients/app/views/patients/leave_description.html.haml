@@ -1,6 +1,7 @@
 %h3 Enter a description:
 
 = form_for @patient do |f|
+	= f.hidden_field :hospital_id, value: @hospital.id
 	= f.label :description, "Description:"
 	= f.text_field :description
 	%br

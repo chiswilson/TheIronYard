@@ -1,0 +1,67 @@
+&nbsp;&nbsp;
+= link_to "(add new patient)", new_patient_path
+
+%div
+	%h3{:class => "i1"} Current Patient List:
+	- if @sortfield == "name"
+		&nbsp;&nbsp;&nbsp;&nbsp;		
+		%a{:href => root_path(q: "Sort By Location")}
+			%input{:type => "button", :value => "Sort by Location"}/
+	- if @sortfield == "workflow_state"	
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		%a{:href => root_path(q: "Sort By Name")}
+			%input{:type => "button", :value => "Sort by Name"}
+
+	/ %select{:class => "s1", :name => "select"}
+	/ 	%option{:selected => "", :value => "value1"} Sorted by: NAME
+	/ 	%option{:value => "value2"} Sorted by: DATE of BIRTH
+
+/ %h3 Sort field is:
+/ = @sortfield
+
+- if @sortfield == "dob"
+	- @patients = @patients.sort{|p1,p2| p1.dateofbirth <=> p2.dateofbirth}
+- elsif @sortfield == "workflow_state"
+	- @patients = @patients.sort{|p1,p2| p1.workflow_state <=> p2.workflow_state}	
+- else
+	- @patients = @patients.sort{|p1,p2| p1.name <=> p2.name}	
+
+- @patients.each do |patient|
+	%br
+	%br
+	%div{class: "d1"}
+		= patient.name
+		&nbsp; (
+		=patient.workflow_state
+		)
+	&nbsp;&nbsp;
+	- if patient.workflow_state == "waiting"
+		= link_to "Go to SURGERY",  go_to_surgery_patient_path(patient), method: :patch
+		&nbsp;
+		= link_to "Go to XRAY",     go_to_xray_patient_path(patient), method: :patch
+		&nbsp;
+		= link_to "Go to DOCTOR",   go_to_doctor_patient_path(patient), method: :patch
+		&nbsp;
+		= link_to "Go to LEAVING",  go_to_leaving_patient_path(patient), method: :patch		
+	- elsif patient.workflow_state == "doctor"
+		= link_to "Go to SURGERY",  go_to_surgery_patient_path(patient), method: :patch
+		&nbsp;
+		= link_to "Go to XRAY",     go_to_xray_patient_path(patient), method: :patch
+		&nbsp;
+		= link_to "Go to BILL PAY", go_to_billpay_patient_path(patient), method: :patch
+	- elsif patient.workflow_state == "surgery"
+		= link_to "Go to DOCTOR",   go_to_doctor_patient_path(patient), method: :patch
+		&nbsp;
+		= link_to "Go to XRAY",     go_to_xray_patient_path(patient), method: :patch
+		&nbsp;
+		= link_to "Go to BILL PAY", go_to_billpay_patient_path(patient), method: :patch	
+	- elsif patient.workflow_state == "xray"
+		= link_to "Go to DOCTOR",   go_to_doctor_patient_path(patient), method: :patch
+		&nbsp;
+		= link_to "Go to SURGERY",  go_to_surgery_patient_path(patient), method: :patch
+		&nbsp;
+		= link_to "Go to BILL PAY", go_to_billpay_patient_path(patient), method: :patch		
+	- elsif patient.workflow_state == "billpay"	
+		= link_to "Patient PAID",   go_to_patientpaid_patient_path(patient), method: :patch
+
+

@@ -1,0 +1,15 @@
+%h4
+	Create new medication, for Patient: &nbsp;
+	= @patient.name
+
+= form_for [@patient, @medication] do |f|
+	= f.label :name, "Name:"
+	= f.text_field :name
+	%br
+	= f.label :description, "Description:"
+	= f.text_field :description
+	%br
+	
+	= f.submit
+
+	= link_to "Cancel", patient_path(@patient)

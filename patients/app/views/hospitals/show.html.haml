@@ -1,0 +1,67 @@
+/ THIS IS THE HOSPITAL VIEW...SHOWS PATIENTS, ETC
+%a{:href => root_path}
+	%input{:type => "button", :value => "Home"}
+
+%h3 
+	Hospital: &nbsp;
+	= @hospital.name
+%hr
+&nbsp;&nbsp;
+= link_to "(Add Patient)", new_patient_path(hospital_id: @hospital.id)
+
+%h4 Patients:
+/ - newpatients = @hospital.patients where.not(workflow_state: "leaving")
+- newpatients = @hospital.patients.select{|x| x.workflow_state != "leaving"}
+- newpatients.each do |patient|
+	%br
+	%div{class: "d1"}
+		= patient.name
+		&nbsp; (
+		=patient.workflow_state
+		)
+	&nbsp;&nbsp;	
+	= link_to "View Patient", patient_path(patient)	
+	&nbsp;&nbsp;
+	- if patient.workflow_state == "waiting"
+		= link_to "Go to SURGERY",  go_to_surgery_patient_path(patient, hospital_id: @hospital.id), method: :patch
+		&nbsp;
+		= link_to "Go to XRAY",     go_to_xray_patient_path(patient, hospital_id: @hospital.id), method: :patch
+		&nbsp;
+		= link_to "Go to DOCTOR",   go_to_doctor_patient_path(patient, hospital_id: @hospital.id), method: :patch
+		&nbsp;
+		= link_to "Go to LEAVING",  go_to_leaving_patient_path(patient, hospital_id: @hospital.id), method: :patch		
+	- elsif patient.workflow_state == "doctor"
+		= link_to "Go to SURGERY",  go_to_surgery_patient_path(patient, hospital_id: @hospital.id), method: :patch
+		&nbsp;
+		= link_to "Go to XRAY",     go_to_xray_patient_path(patient, hospital_id: @hospital.id), method: :patch
+		&nbsp;
+		= link_to "Go to BILL PAY", go_to_billpay_patient_path(patient, hospital_id: @hospital.id), method: :patch
+	- elsif patient.workflow_state == "surgery"
+		= link_to "Go to DOCTOR",   go_to_doctor_patient_path(patient, hospital_id: @hospital.id), method: :patch
+		&nbsp;
+		= link_to "Go to XRAY",     go_to_xray_patient_path(patient, hospital_id: @hospital.id), method: :patch
+		&nbsp;
+		= link_to "Go to BILL PAY", go_to_billpay_patient_path(patient, hospital_id: @hospital.id), method: :patch	
+	- elsif patient.workflow_state == "xray"
+		= link_to "Go to DOCTOR",   go_to_doctor_patient_path(patient, hospital_id: @hospital.id), method: :patch
+		&nbsp;
+		= link_to "Go to SURGERY",  go_to_surgery_patient_path(patient, hospital_id: @hospital.id), method: :patch
+		&nbsp;
+		= link_to "Go to BILL PAY", go_to_billpay_patient_path(patient, hospital_id: @hospital.id), method: :patch		
+	- elsif patient.workflow_state == "billpay"	
+		= link_to "Patient PAID",   go_to_patientpaid_patient_path(patient, hospital_id: @hospital.id), method: :patch
+	%br	
+
+
+%br
+%br
+%hr
+&nbsp;&nbsp;
+= link_to "(Add Doctor)", new_doctor_hospital_path(@hospital)
+%h4 Doctors:
+- @hospital.doctors.each do |doctor|
+	%br
+	%div{class: "d1"}
+		= doctor.name
+	&nbsp;&nbsp;	
+	/ = link_to "View Doctor", doctor_path(doctor)	

@@ -1,9 +1,13 @@
 &nbsp;&nbsp;
 = link_to "(add new Hospital)", new_hospital_path
 
+%h3 Hospital List
+%hr
 - @hospitals.each do |hospital|
-	%br
 	%br
 	%div{class: "d1"}
 		= hospital.name
+		
+	&nbsp;&nbsp;
 	= link_to "Select",  hospital_path(hospital)
+	%br

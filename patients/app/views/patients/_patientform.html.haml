@@ -1,6 +1,8 @@
 / %h2 testing
 
-= form_for [@hospital, @patient] do |f|
+= form_for [@patient] do |f|
+	/ = f.hidden_field :hospital_id, value: @hospitals.id
+	= hidden_field_tag "patient[hospital_ids][]", @hospital.id
 	= f.label :name, "Name:"
 	= f.text_field :name
 	%br
@@ -8,8 +10,10 @@
 	= f.text_field :dateofbirth
 	%br
 	= f.submit
+	%a{:href => hospital_path(@hospital)}
+		%input{:type => "button", :value => "Cancel"}
 
-	= link_to "Cancel", hospital_path(@hospital)
+	
 
 / %a href="/patients"
 /   %input type="button" value="Cancel"

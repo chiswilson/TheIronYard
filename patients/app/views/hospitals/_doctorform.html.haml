@@ -1,0 +1,10 @@
+= form_for [@hospital, @doctor], url: create_doctor_hospital_path(@hospital) do |f|
+	/ = f.hidden_field :curable, value: @hospital
+	/ = hidden_field_tag "doctor[hospital_ids][]", @hospital.id
+	= f.label :name, "Name:"
+	= f.text_field :name
+	%br
+	
+	= f.submit
+
+	/ = link_to "Cancel", hospital_path(@hospital)

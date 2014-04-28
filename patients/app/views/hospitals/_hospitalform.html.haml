@@ -1,0 +1,8 @@
+= form_for @hospital do |f|
+	= f.label :name, "Name:"
+	= f.text_field :name
+	%br
+	= f.submit
+
+	%a{:href => root_path}
+		%input{:type => "button", :value => "Cancel"}

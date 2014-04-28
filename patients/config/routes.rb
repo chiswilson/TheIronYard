@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
 
   root 'home#index'
-  get 'index/' => 'home#index'
   
   resources :hospitals do
-    resources :patients do
+    member do
+      get :new_doctor
+      post :create_doctor
+    end
+  end
 
-      collection do
-        # get :sort_by_name
-        # get :sort_by_location
-      end
-
-      member do
+  resources :patients do
+    member do
+        get :new_doctor
+        post :create_doctor
         patch :go_to_xray
         patch :go_to_surgery
         patch :go_to_doctor
@@ -19,11 +20,12 @@ Rails.application.routes.draw do
         patch :go_to_leaving
         patch :go_to_patientpaid
         get   :leave_description
-      end
-
-      resources :medications
     end
+    resources :medications
   end
+
+  # resources :doctors
+  
 
 
   # The priority is based upon order of creation: first created -> highest priority.

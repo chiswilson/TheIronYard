@@ -1,0 +1,35 @@
+/ SHOW A SPECIFIC PATIENT, AND ALL HIS MEDICATIONS...
+/ %a{:href => hospital_path(@hospital)}
+/ 	%input{:type => "button", :value => "Hospital View"}
+
+/ %h3 
+/ 	Hospital: &nbsp;
+/ 	= @hospital.name
+
+%a{:href => root_path}
+	%input{:type => "button", :value => "Home"}
+
+%h3 
+	Patient: &nbsp;
+	= @patient.name
+%hr
+&nbsp;&nbsp;
+= link_to "(Add Medication)", new_patient_medication_path(@patient)
+%h4 Medications:
+- @patient.medications.each do |med|
+	%br
+	%div{class: "d1"}
+		= med.name
+		&nbsp;&nbsp;
+		Desc:
+		= med.description
+
+%hr
+&nbsp;&nbsp;
+= link_to "(Add Doctor)", new_doctor_patient_path(@patient)
+%h4 Doctors for this patient:
+- @patient.doctors.each do |doc|
+	%br
+	%div{class: "d1"}
+		= doc.name
+		/ &nbsp;&nbsp;
