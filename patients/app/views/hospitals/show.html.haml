@@ -6,14 +6,16 @@
 	Hospital: &nbsp;
 	= @hospital.name
 %hr
+
 &nbsp;&nbsp;
 = link_to "(Add Patient)", new_patient_path(hospital_id: @hospital.id)
 
 %h4 Patients:
-/ - newpatients = @hospital.patients where.not(workflow_state: "leaving")
 - newpatients = @hospital.patients.select{|x| x.workflow_state != "leaving"}
-- newpatients.each do |patient|
-	%br
+
+/ - newpatients = newpatients.search_name("wilson")
+
+- newpatients.each do |patient|	
 	%div{class: "d1"}
 		= patient.name
 		&nbsp; (
@@ -51,6 +53,7 @@
 	- elsif patient.workflow_state == "billpay"	
 		= link_to "Patient PAID",   go_to_patientpaid_patient_path(patient, hospital_id: @hospital.id), method: :patch
 	%br	
+	%br	
 
 
 %br
@@ -59,9 +62,10 @@
 &nbsp;&nbsp;
 = link_to "(Add Doctor)", new_doctor_hospital_path(@hospital)
 %h4 Doctors:
-- @hospital.doctors.each do |doctor|
-	%br
+- @hospital.doctors.each do |doc|
 	%div{class: "d1"}
-		= doctor.name
+		= doc.name
 	&nbsp;&nbsp;	
-	/ = link_to "View Doctor", doctor_path(doctor)	
+	= link_to "Delete Doctor", delete_doctor_hospital_path(@hospital, doctor: doc), method: :delete	
+	%br
+	%br	

@@ -12,6 +12,14 @@ class MedicationsController < ApplicationController
 		redirect_to patient_path(@patient)
 	end
 
+	def destroy
+		@patient = Patient.find params[:patient_id]
+		@medication = Medication.find params[:id]
+		@medication.delete
+		redirect_to patient_path(@patient)
+
+	end
+
 	private
 
     def medication_params

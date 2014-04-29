@@ -10,6 +10,12 @@ class Patient < ActiveRecord::Base
 	validates :name, presence: true
   validates :description, presence: true, length: {minimum: 1}
 
+  # def self.search_names(search)
+  #   where("name like ?", "%#{search}%")
+  # end
+
+  scope :search_names, -> search { where( "name like ?", "%#{search}%") }
+
   include Workflow
   workflow do
     state :waiting do

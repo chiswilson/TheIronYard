@@ -1,0 +1,10 @@
+%a{:href => root_path}
+	%input{:type => "button", :value => "Home"}
+
+%h3 Patient Search results:
+%br
+- @search_names.each do |dude|
+	= dude.name
+	&nbsp;
+	= link_to "View patient", patient_path(dude)
+	%br

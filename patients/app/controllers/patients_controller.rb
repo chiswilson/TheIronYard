@@ -42,6 +42,7 @@ class PatientsController < ApplicationController
 		end
 	end
 
+# ****************************
 	def go_to_surgery
 		@patient = Patient.find params[:id]
 		@patient.go_to_surgery!
@@ -85,7 +86,7 @@ class PatientsController < ApplicationController
 		@patient = Patient.find params[:id]
 	end
 
-	
+# ****************************	
 	def new_doctor
 		@patient = Patient.find params[:id]
 		@doctor = @patient.doctors.new
@@ -98,6 +99,20 @@ class PatientsController < ApplicationController
 		redirect_to patient_path(@patient)
 	end
 
+	def delete_doctor
+		@patient = Patient.find params[:id]
+		docid = params[:doctor]
+		@doctor = Doctor.find docid
+		@doctor.delete
+		redirect_to patient_path(@patient)
+	end
+
+# ****************************
+	def search_names
+		@search_names = Patient.search_names params[:q]
+	end
+
+# ****************************
 	def sort_by_name
 		@patients = Patient.where.not(workflow_state: "leaving")	
 		@sortfield = "name"		

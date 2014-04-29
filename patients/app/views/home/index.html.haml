@@ -11,3 +11,10 @@
 	&nbsp;&nbsp;
 	= link_to "Select",  hospital_path(hospital)
 	%br
+
+%hr
+%br
+%h3 Patient Search
+= form_tag search_names_patients_path, method: :get do
+	= text_field_tag "q", "", placeholder: "Search..."
+	= submit_tag "Search"	

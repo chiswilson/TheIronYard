@@ -37,6 +37,14 @@ class HospitalsController < ApplicationController
 		redirect_to hospital_path(@hospital)
 	end
 
+	def delete_doctor
+		@hospital = Hospital.find params[:id]
+		@doctor = Doctor.find params[:doctor]
+		@doctor.delete
+		redirect_to hospital_path(@hospital)
+	end
+
+
 
 	private
 

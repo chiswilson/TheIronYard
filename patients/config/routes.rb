@@ -6,13 +6,18 @@ Rails.application.routes.draw do
     member do
       get :new_doctor
       post :create_doctor
+      delete :delete_doctor
     end
   end
 
   resources :patients do
+    collection do
+      get :search_names
+    end
     member do
         get :new_doctor
         post :create_doctor
+        delete :delete_doctor
         patch :go_to_xray
         patch :go_to_surgery
         patch :go_to_doctor
@@ -26,6 +31,7 @@ Rails.application.routes.draw do
 
   # resources :doctors
   
+  # delete 'doctor/:id/delete' => 'patients#delete_doctor', as: :delete_doctor_on_patient
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -39,6 +45,8 @@ Rails.application.routes.draw do
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+
+  
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
