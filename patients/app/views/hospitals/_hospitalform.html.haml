@@ -1,8 +1,10 @@
-= form_for @hospital do |f|
-	= f.label :name, "Name:"
-	= f.text_field :name
+= simple_form_for @hospital do |f|
+	= f.input :name, input_html: { class: 'hospital_name_input' } 
+	%h5{class: "namereqclass"}
+		&nbsp;&nbsp;
+		(Name is required)
 	%br
-	= f.submit
+	= f.button :submit, class: 'hospital_submit_button'
 
 	%a{:href => root_path}
 		%input{:type => "button", :value => "Cancel"}

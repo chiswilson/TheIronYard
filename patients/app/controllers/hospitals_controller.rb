@@ -6,8 +6,13 @@ class HospitalsController < ApplicationController
 
 	def create
 		@hospital = Hospital.new hospital_params
-		@hospital.save
-		redirect_to root_path
+		if @hospital.save == true
+      		flash[:notice] = "Hospital saved OK."
+      		redirect_to root_path
+    	else
+      		flash[:error] = "Error saving Hospital!"
+      		render :new
+    	end
 	end
 
 	def edit
@@ -27,14 +32,18 @@ class HospitalsController < ApplicationController
 	def new_doctor
 		@hospital = Hospital.find params[:id]
 		@doctor = @hospital.doctors.new
-
 	end
 
 	def create_doctor
 		@hospital = Hospital.find params[:id]
 		@doctor = @hospital.doctors.new doctor_params
-		@doctor.save
-		redirect_to hospital_path(@hospital)
+		if @doctor.save
+			flash[:notice] = "Doctor saved OK."
+			redirect_to hospital_path(@hospital)
+		else
+			flash[:error] = "Error saving Doctor!"
+      		render :new_doctor
+      	end
 	end
 
 	def delete_doctor

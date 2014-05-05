@@ -1,0 +1,6 @@
+// Remove the bottom line first. Then replace the top line with *Both*
+
+$(".patient_b" + "<%= @patient.id %>").remove()
+$(".patient_a" + "<%= @patient.id %>").replaceWith(
+"<%= escape_javascript(render(partial: 'hospitals/show_patient', locals: { patient: @patient, hospital: @hospital }))%>"
+)

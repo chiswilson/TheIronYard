@@ -1,20 +1,29 @@
-/ %h2 testing
-
-= form_for [@patient] do |f|
-	/ = f.hidden_field :hospital_id, value: @hospitals.id
+= simple_form_for @patient do |f|
 	= hidden_field_tag "patient[hospital_ids][]", @hospital.id
-	= f.label :name, "Name:"
-	= f.text_field :name
+	= f.input :name, label: "Name:", input_html: { class: 'patient_name_input' } 
 	%br
-	= f.label :dateofbirth, "Date of Birth:"
-	= f.text_field :dateofbirth
+	= f.input :dateofbirth, label: "Date of Birth:"
 	%br
-	= f.submit
+	%h5{class: "namereqclass"}
+		&nbsp;&nbsp;
+		(Name is required)
+	%br
+	= f.button :submit, class: 'patient_submit_button'
 	%a{:href => hospital_path(@hospital)}
 		%input{:type => "button", :value => "Cancel"}
 
-	
-
-/ %a href="/patients"
-/   %input type="button" value="Cancel"
-    
+/ = form_for [@patient] do |f|
+/ 	/ = f.hidden_field :hospital_id, value: @hospitals.id
+/ 	= hidden_field_tag "patient[hospital_ids][]", @hospital.id
+/ 	= f.label :name, "Name:"
+/ 	= f.text_field :name
+/ 	%br
+/ 	= f.label :dateofbirth, "Date of Birth:"
+/ 	= f.text_field :dateofbirth
+/ 	%br
+/ 	%h5{class: "namereqclass"}
+/ 		&nbsp;&nbsp;
+/ 		(Name is required)
+/ 	= f.submit, class: 'patient_submit_button'
+/ 	%a{:href => hospital_path(@hospital)}
+/ 		%input{:type => "button", :value => "Cancel"}

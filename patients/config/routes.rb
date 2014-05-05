@@ -24,7 +24,7 @@ Rails.application.routes.draw do
         patch :go_to_billpay
         patch :go_to_leaving
         patch :go_to_patientpaid
-        get   :leave_description
+        # get   :leave_description
     end
     resources :medications
   end

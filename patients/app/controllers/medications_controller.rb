@@ -8,8 +8,14 @@ class MedicationsController < ApplicationController
 	def create
 		@patient = Patient.find params[:patient_id]
 		@medication = @patient.medications.new medication_params
-		@medication.save
-		redirect_to patient_path(@patient)
+		if @medication.save
+			flash[:notice] = "Medication saved OK."
+			redirect_to patient_path(@patient)
+		else
+			flash[:error] = "Error saving Medication!"
+			render :new
+		end
+			
 	end
 
 	def destroy

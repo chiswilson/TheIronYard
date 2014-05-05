@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+	respond_to :html, :json
 
 	def index
 		redirect_to root_path
@@ -34,7 +35,7 @@ class PatientsController < ApplicationController
 	def update
 		@patient = Patient.find params[:id]		
 		if @patient.update_attributes patient_params
-		 	# flash[:notice]= "Patient updated OK."
+		 	flash[:notice]= "Patient updated OK."
 		 	redirect_to hospital_path(params[:patient][:hospital_id])
 		else
 		    flash[:error]= "Error updating this Patient!"
@@ -44,47 +45,61 @@ class PatientsController < ApplicationController
 
 # ****************************
 	def go_to_surgery
+		@hospital = Hospital.find params[:hospital_id]
 		@patient = Patient.find params[:id]
 		@patient.go_to_surgery!
-		redirect_to hospital_path(params[:hospital_id])
+		respond_to do |format|
+      	  format.js { render :update_divs }
+      	end  
 	end
 
 	def go_to_xray
+		@hospital = Hospital.find params[:hospital_id]
 		@patient = Patient.find params[:id]
 		@patient.go_to_xray!
-		redirect_to hospital_path(params[:hospital_id])
+		respond_to do |format|
+      	  format.js { render :update_divs }
+      	end  
 	end
 
 	def go_to_doctor
+		@hospital = Hospital.find params[:hospital_id]
 		@patient = Patient.find params[:id]
 		@patient.go_to_doctor!
-		redirect_to hospital_path(params[:hospital_id])
+		respond_to do |format|
+      	  format.js { render :update_divs }
+      	end  
 	end
 
 	def go_to_billpay
+		@hospital = Hospital.find params[:hospital_id]
 		@patient = Patient.find params[:id]
 		@patient.go_to_billpay!
-		redirect_to hospital_path(params[:hospital_id])
-	end
-
-	def go_to_leaving
-		@patient = Patient.find params[:id]
-		@patient.go_to_leaving!
-		redirect_to hospital_path(params[:hospital_id])
+		respond_to do |format|
+      	  format.js { render :update_divs }
+      	end  	
 	end
 
 	def go_to_patientpaid
-		@patient = Patient.find params[:id]
-		@patient.go_to_patientpaid!
 		@hospital = Hospital.find params[:hospital_id]
+		@patient = Patient.find params[:id]
+		@patient.go_to_patientpaid!		
 		render :leave_description
-		# redirect_to leave_description_patient_path(params[:hospital_id])
 	end
 
-	def leave_description
+	def go_to_leaving
 		@hospital = Hospital.find params[:hospital_id]
 		@patient = Patient.find params[:id]
+		@patient.go_to_leaving!
+		respond_to do |format|
+      	  format.js { render :update_divs_clear }
+      	end  
 	end
+
+	# def leave_description
+	# 	@hospital = Hospital.find params[:hospital_id]
+	# 	@patient = Patient.find params[:id]
+	# end
 
 # ****************************	
 	def new_doctor
@@ -95,8 +110,13 @@ class PatientsController < ApplicationController
 	def create_doctor
 		@patient = Patient.find params[:id]
 		@doctor = @patient.doctors.new doctor_params
-		@doctor.save
-		redirect_to patient_path(@patient)
+		if @doctor.save
+			flash[:notice]= "Doctor added OK."
+			redirect_to patient_path(@patient)
+		else
+			flash[:error]= "Error adding Doctor!"
+		    render :new_doctor
+		end
 	end
 
 	def delete_doctor
@@ -110,6 +130,7 @@ class PatientsController < ApplicationController
 # ****************************
 	def search_names
 		@search_names = Patient.search_names params[:q]
+		respond_with(@search_names) 
 	end
 
 # ****************************
@@ -125,16 +146,15 @@ class PatientsController < ApplicationController
 		render "home/index"
 	end
 
-
-
+# ****************************
 	private
 
     def patient_params
-      params.require(:patient).permit(:name, :dateofbirth, :description, {hospital_ids: []}
-      	)
+      params.require(:patient).permit(:name, :dateofbirth, :description, {hospital_ids: []} )
     end
 
     def doctor_params
     	params.require(:doctor).permit(:name)
     end
+
 end

@@ -1,10 +1,15 @@
+/ Not currently being used.
+
 = form_for [@doctor] do |f|
 	= f.hidden_field :curable, value: @hospital
 	/ = hidden_field_tag "doctor[hospital_ids][]", @hospital.id
 	= f.label :name, "Name:"
-	= f.text_field :name
+	= f.text_field :name, class: "doctor_name_input"
 	%br
+	%h5{class: "namereqclass"}
+		&nbsp;&nbsp;
+		(Name is required)
 	
-	= f.submit
+	= f.submit 'newDocButton', class: "doctor_submit_button"
 
 	/ = link_to "Cancel", hospital_path(@hospital)

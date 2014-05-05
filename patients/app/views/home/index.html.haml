@@ -15,6 +15,11 @@
 %hr
 %br
 %h3 Patient Search
+
 = form_tag search_names_patients_path, method: :get do
 	= text_field_tag "q", "", placeholder: "Search..."
 	= submit_tag "Search"	
+
+/ = form_tag search_names_patients_path, method: :get, remote: true do
+/ 	= text_field_tag "q", "", placeholder: "Search..."
+/ 	= submit_tag "Search"

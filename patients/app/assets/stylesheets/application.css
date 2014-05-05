@@ -35,10 +35,24 @@
 	color: red;
 }
 
+.namereqclass {
+	color: red;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 .i1 {
 	display: inline-block;
 }
 
 .s1 {
 	display: inline-block;
+}
+
+.gray_background {
+  background-color: rgb(233, 233, 233);
+}
+
+.blue_background {
+  background-color: rgb(33, 167, 255);
 }
