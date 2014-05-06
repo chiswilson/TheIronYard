@@ -1,1 +1,5 @@
-console.log("Got here brah!")
+// console.log("Got here brah!")
+$("ul.searchedpatients").html("");
+<% @search_names.each do |pat| %>
+  $("ul.searchedpatients").append("%li  <%= pat.name %>");
+<% end %>

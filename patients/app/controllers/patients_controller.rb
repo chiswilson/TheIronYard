@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-	respond_to :html, :json
+	respond_to :html, :js
 
 	def index
 		redirect_to root_path
@@ -129,7 +129,11 @@ class PatientsController < ApplicationController
 
 # ****************************
 	def search_names
-		@search_names = Patient.search_names params[:q]
+		if params[:q]
+		    @search_names = Patient.search_names params[:q]
+		else
+			@search_names = Patient.all
+		end
 		respond_with(@search_names) 
 	end
 

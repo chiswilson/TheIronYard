@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get :new_doctor
       post :create_doctor
       delete :delete_doctor
+      get :search_patients
     end
   end
 

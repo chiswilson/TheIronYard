@@ -29,6 +29,16 @@ class HospitalsController < ApplicationController
 	def destroy
 	end
 
+# ******************************************************
+	def search_patients
+		@hospital = Hospital.find params[:id]
+		respond_to do |format|
+      	  format.js
+      	end  	
+
+	end
+
+# ******************************************************
 	def new_doctor
 		@hospital = Hospital.find params[:id]
 		@doctor = @hospital.doctors.new

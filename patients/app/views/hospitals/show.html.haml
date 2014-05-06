@@ -11,6 +11,11 @@
 = link_to "(Add Patient)", new_patient_path(hospital_id: @hospital.id)
 
 %h4 Patients:
+
+/ = form_tag search_patients_hospital_path(@hospital), method: :get, remote: true do
+/ 	= text_field_tag "q", "", placeholder: "Search..."
+/ 	= submit_tag "Search"	
+%br
 - newpatients = @hospital.patients.select{|x| x.workflow_state != "leaving"}
 / - newpatients = newpatients.search_name("wilson")
 - newpatients.each do |patient|	
