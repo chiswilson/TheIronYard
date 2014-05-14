@@ -1,0 +1,8 @@
+= simple_form_for @location do |f|
+	= f.input :name, label: "Location name", input_html: { maxlength: 20 }
+	= f.button :submit
+	
+	/ = button_tag "Cancel", :type => 'reset'
+	%a{:href => locations_path}
+		%input{type: "button", value: "Cancel"}/
+	

@@ -1,0 +1,8 @@
+- cardnum = 0
+- 4.times do
+	%div.row
+		- 8.times do
+			%div.card
+				- picname = @deck[cardnum] + ".png"
+				= image_tag(picname, class: "cardimage")
+				- cardnum = cardnum + 1

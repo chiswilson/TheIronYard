@@ -1,0 +1,10 @@
+%h3 Locations
+
+&nbsp;&nbsp;
+= link_to "(Add Location)", new_location_path
+
+%ul
+- @locations.each do |loc|
+	%li
+		= link_to "#{loc.name}", location_path(loc)
+

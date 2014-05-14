@@ -1,0 +1,8 @@
+= simple_form_for @course do |f|
+	/ = f.hidden_field :location_id, value: @location.id
+	= f.hidden_field :location_id, value: @location_id
+	= f.input :name, label: "Course name"
+	= f.button :submit
+	
+	%a{:href => location_path(@location_id)}
+		%input{type: "button", value: "Cancel"}

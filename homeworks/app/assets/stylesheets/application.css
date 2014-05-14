@@ -40,3 +40,24 @@ ul.hmenu li {
 .adminlabel {
 	margin-top: 2px;
 }
+
+.row {
+	background-color: aliceblue;
+	border-style: dashed;
+	border-width: 1px;
+	/*min-height: 300px;*/
+	width: 100%;
+	vertical-align: top;
+
+}
+
+.card {
+	background-color: white;
+	width: 96px;
+	height: 120px;
+	margin: 8px;
+	margin-top: 5px;
+	display: inline-block;
+	/*position: relative;*/
+	border-radius: 4px;
+}

@@ -1,0 +1,13 @@
+/ SHOW a single location
+%h3
+	Location: &nbsp;
+	= @location.name
+
+%h4 Courses:
+&nbsp;&nbsp;
+= link_to "(Add Course)", new_course_path(location_id: @location.id)	
+
+%ul
+- @location.courses.each do |course|
+	%li
+		= link_to "#{course.name}", course_path(course)	

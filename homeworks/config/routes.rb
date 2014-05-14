@@ -2,10 +2,17 @@ Rails.application.routes.draw do
   devise_for :users
 
   root 'home#index'
+  get '/newgame' => 'home#newgame'
+
+  resources :users
+
+  resources :courses
 
   resources :locations
 
-  resources :courses
+  resources :assignments
+
+  
 
 
   # The priority is based upon order of creation: first created -> highest priority.
