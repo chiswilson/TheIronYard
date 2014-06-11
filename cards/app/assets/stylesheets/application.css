@@ -14,19 +14,57 @@
  *= require_self
 */ 
 
-body {
+/*body {
   padding-top: 50px;
+}*/
+
+/*.starter-template {
+  padding: 5px;
+  text-align: center;
+}*/
+
+.div1 {
+	border-style: solid;
+	border-width: 1px;
+	width: 100%;
+	min-height: 50px;
+	background-color: beige;
+	margin-top: 3px;
+	/*display: inline-block;*/
+	/*position: absolute;
+	top: 5px;
+	left: 10px;*/
 }
 
-.starter-template {
-  padding: 40px 15px;
-  text-align: center;
+/*.div2 {
+	border-style: solid;
+	border-width: 1px;
+	width: 40%;
+	min-height: 50px;
+	background-color: beige;
+	display: inline-block;
+}*/
+
+h5 {
+	margin-top: 2px;
+	margin-bottom: 2px;
+	margin-left: 5px;
+}
+
+h6 {
+	margin-top: 2px;
+	margin-bottom: 2px;
+	margin-left: 5px;
+}
+
+.posted_msg {
+	color: green;
 }
 
 .row {
-	background-color: aliceblue;
-	border-style: dashed;
-	border-width: 1px;
+	background-color: beige;
+	/*border-style: dashed;
+	border-width: 1px;*/
 	/*min-height: 300px;*/
 	width: 100%;
 	vertical-align: top;
@@ -34,6 +72,17 @@ body {
 
 .card {
 	background-color: white;
+	width: 96px;
+	height: 120px;
+	margin: 8px;
+	margin-top: 5px;
+	display: inline-block;
+	/*position: relative;*/
+	border-radius: 4px;
+}
+
+.card_idle {
+	background-color: lightgreen;
 	width: 96px;
 	height: 120px;
 	margin: 8px;

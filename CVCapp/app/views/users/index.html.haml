@@ -1,0 +1,12 @@
+%h3 Users:
+%ul
+	- @users.each do |user|
+		- str = ""
+		- if user.master_admin? then
+			- str += " (Master Admin)"
+		- elsif user.admin? then
+			- str += " (Admin)"
+
+		%li
+			= link_to "#{user.name}", edit_user_path(user)
+			= str

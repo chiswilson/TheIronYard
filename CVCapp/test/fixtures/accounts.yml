@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account_num: MyString
+  name: MyString
+  description: MyString
+  max_contacts: 1
+
+two:
+  account_num: MyString
+  name: MyString
+  description: MyString
+  max_contacts: 1

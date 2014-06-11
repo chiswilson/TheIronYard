@@ -1,8 +1,14 @@
 - cardnum = 0
 - 4.times do
 	%div.row
+
+		/ - 8.times do
+		/ 	%div.card
+		/ 		- picname = @deck[cardnum] + ".png"
+		/ 		= image_tag(picname, class: "cardimage")
+		/ 		- cardnum = cardnum + 1
+
 		- 8.times do
-			%div.card
-				- picname = @deck[cardnum] + ".png"
-				= image_tag(picname, class: "cardimage")
+			%div{ class: "card card_#{cardnum}", image_url: "url(assets/#{@deck[cardnum]}.png)", cardnum: "#{@deck[cardnum][0]}" }
+				/ - puts @deck[cardnum][0]
 				- cardnum = cardnum + 1

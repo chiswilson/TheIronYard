@@ -1,0 +1,17 @@
+%h1 Listing comm_devices
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @comm_devices.each do |comm_device|
+    %tr
+      %td= link_to 'Show', comm_device
+      %td= link_to 'Edit', edit_comm_device_path(comm_device)
+      %td= link_to 'Destroy', comm_device, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Comm device', new_comm_device_path

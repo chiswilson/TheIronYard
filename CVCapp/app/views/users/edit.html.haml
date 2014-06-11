@@ -1,0 +1,22 @@
+%form.form-horizontal
+  %fieldset
+    / Form Name
+    %legend Edit User
+    / Text input
+    .control-group
+      %label.control-label{:for => "name"} Name:
+      .controls
+        %input#name.input-medium{:name => "name", :placeholder => "name here", :required => "", :type => "text"}
+    / Multiple Checkboxes
+    .control-group
+      %label.control-label{:for => "checkboxes"} Options:
+      .controls
+        %label.checkbox{:for => "checkboxes-0"}
+          %input#checkboxes-0{:name => "checkboxes", :type => "checkbox", :value => "Admin"}
+            Admin
+    / Button (Double)
+    .control-group
+      %label.control-label{:for => "button1id"}
+      .controls
+        %button#button1id.btn.btn-success{:name => "button1id"} Save
+        %button#button2id.btn.btn-default{:name => "button2id"} Cancel

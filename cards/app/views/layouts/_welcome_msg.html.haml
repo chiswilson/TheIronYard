@@ -1,0 +1,2 @@
+- avg_guesses = current_user.user_stat.total_guesses / current_user.user_stat.total_games
+%h5 Welcome: #{current_user.email} &nbsp; (games: #{current_user.user_stat.total_games}, &nbsp; avg. guesses: #{avg_guesses}, &nbsp; best game: #{current_user.user_stat.best_game})

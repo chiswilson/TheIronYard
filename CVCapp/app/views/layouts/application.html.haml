@@ -1,0 +1,63 @@
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    %meta{:content => "", :name => "description"}
+    %meta{:content => "", :name => "author"}
+    / %link{:href => "../../assets/ico/favicon.ico", :rel => "shortcut icon"}
+    %title CVC Paging
+    / Bootstrap core CSS
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+    / Just for debugging purposes. Don't actually copy this line!
+    /[if lt IE 9] <script src="../../assets/js/ie8-responsive-file-warning.js"></script>
+    / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+    /[if lt IE 9]
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  %body{:role => "document"}
+    / Fixed navbar
+    .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+      .container
+        .navbar-header
+          = link_to "CVC Paging", root_path, class: "navbar-brand"
+        .navbar-collapse.collapse
+          = render 'layouts/navbar'
+        / /.nav-collapse
+    .container.theme-showcase{:role => "main"}
+      .topdiv
+        = image_tag("/assets/cvc1.gif")
+
+        / JUST FOR DEBUG
+        - if session[:acct_id]
+          %h6.session-acct-id (Debug: session acct id: #{session[:acct_id]})
+
+        - if user_signed_in?
+          
+          - if current_user.master_admin?
+            %h6.logintype (Logged in as: &nbsp; Master Admin)
+          
+          - elsif current_user.admin?
+            %h6.logintype (Logged in as: &nbsp; Account Admin)
+            - if current_user.account
+              %h5.account-name 
+                &nbsp;
+                Account: #{current_user.account.name}
+                &nbsp;
+            
+          - else
+            %h6.logintype (Logged in as: &nbsp; User)
+            - if current_user.account
+              %h5.account-name 
+                &nbsp;
+                Account: #{current_user.account.name}
+                &nbsp;
+
+        - if notice || alert
+          %p.notice= notice
+          %p.alert= alert
+
+      = yield

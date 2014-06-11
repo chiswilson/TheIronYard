@@ -1,0 +1,77 @@
+.topdiv {
+	/*background-color: #FCECD5;*/
+	position: relative;
+}
+
+.session-acct-id {
+	position: absolute;
+	top: 2;
+	left: 250;
+	margin-top: 0;
+}
+
+.logintype {
+	position: absolute;
+	top: 2;
+	right: 2;
+	margin-top: 0;
+}
+
+.account-name {
+	position: absolute;
+	top: 20;
+	right: 2;
+	margin-top: 0;
+	background-color: darkgrey;
+	color: white;
+}
+
+.notice {
+	/*font-size: 14px;*/
+	position: absolute;
+	color: white;
+	background-color: green;
+	top: 45;
+	right: 2;
+	margin-top: 0;
+}
+
+.alert {
+	position: absolute;
+	top: 30;
+	right: 2;
+	margin-top: 0;
+}
+
+.delete_link {
+	color: red;
+}
+
+.account-table {
+	font-size: small;
+	border-radius: 5px;
+}
+
+.my-form {
+	border: 1px;
+	border-style: solid;
+	
+	/*margin: 0 auto;*/
+	margin-top: 15px;
+	padding-top: 5px;
+}
+
+/*.table {
+  border-collapse: separate;
+  border-color: #cfcfd6;
+  border: 1px solid #cfcfd6;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  overflow: hidden;
+  border-right: 0px;
+  /*Data Tables*/
+}*/

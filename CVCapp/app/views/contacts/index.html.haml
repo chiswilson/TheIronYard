@@ -1,0 +1,33 @@
+%h4 Contacts:
+
+&nbsp;&nbsp;
+= link_to 'New Contact...', new_contact_path
+
+%table.table.table-bordered.table-striped.account-table
+  %thead
+    %th Contact Name
+    %th Account
+    %th Misc.
+    %th Edit
+    %th Delete
+  %tbody
+    - @contacts.each do |contact|
+
+      %tr
+        %td #{contact.name}
+        - if contact.account
+          %td #{contact.account.name}
+        - else
+          %td (N/A)  
+        %td #{contact.misc}
+        %td
+          %p
+            %a{:href => edit_contact_path(contact)}
+              %button.btn.btn-primary.btn-xs
+                %span.glyphicon.glyphicon-pencil
+
+        %td
+          %p
+            %a{:href => contact_path(contact), data: {method: 'delete', confirm: "Delete Contact: #{contact.name}?"}}
+              %button.btn.btn-danger.btn-xs
+                %span.glyphicon.glyphicon-trash

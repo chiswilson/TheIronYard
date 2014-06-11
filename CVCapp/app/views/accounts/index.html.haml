@@ -1,0 +1,35 @@
+%h4 Accounts:
+
+&nbsp;&nbsp;
+= link_to 'New Account...', new_account_path
+
+%table.table.table-bordered.table-striped.account-table
+  %thead
+    %th Account Name
+    %th Account Number
+    %th Description
+    %th Max Contacts
+    %th Edit
+    %th Delete
+  %tbody
+    - @accounts.each do |account|
+
+      %tr
+        %td #{account.name}
+        %td #{account.account_num}
+        %td #{account.description}
+        %td #{account.max_contacts}
+        %td
+          %p
+            %a{:href => edit_account_path(account)}
+              %button.btn.btn-primary.btn-xs
+                %span.glyphicon.glyphicon-pencil
+
+        %td
+          %p
+            %a{:href => account_path(account), data: {method: 'delete', confirm: "Delete Account: #{account.name}?"}}
+              %button.btn.btn-danger.btn-xs
+                %span.glyphicon.glyphicon-trash
+
+
+            / = link_to 'X', account_path(account), :method => :delete, :data => { :confirm => 'Delete Account?'}, class: "delete_link"

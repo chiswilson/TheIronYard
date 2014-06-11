@@ -1,0 +1,65 @@
+%div.col-md-6.my-form
+  = form_for @account, html: {class: "form-horizontal"} do |f|
+    
+    .form-group
+      = f.label :name, "Account Name:", class: "col-md-4 control-label"
+      .col-md-4
+        = f.text_field :name, class: "form-control input-md"
+    
+    .form-group
+      = f.label :account_num, "Account Number:", class: "col-md-4 control-label"
+      .col-md-4
+        = f.text_field :account_num, class: "form-control input-md"
+    
+    .form-group
+      = f.label :description, "Description:", class: "col-md-4 control-label"
+      .col-md-8
+        = f.text_area :description, class: "form-control input-md"
+
+    .form-group
+      = f.label :max_contacts, "Max. Contacts", class: "col-md-4 control-label"
+      .col-md-4
+        = f.text_field :max_contacts, class: "form-control input-md"    
+
+    .form-group
+      .col-md-4
+      .col-md-8
+        = f.submit class: "btn btn-primary"
+        &nbsp; or
+        = link_to 'CANCEL', accounts_path
+
+    / %br
+    / %h5{class: "namereqclass"}
+    / 	&nbsp;&nbsp;
+    / 	(Name is required)
+    
+    /, class: "doctor_submit_button"
+
+
+/ %div.col-md-6.account-form
+/   %form.form-horizontal
+/     %fieldset
+      
+/       %legend New Account
+      
+/       .form-group
+/         %label.col-md-4.control-label{:for => "name"} Account Name:
+/         .col-md-4
+/           %input#name.form-control.input-md{:name => "name", :placeholder => "", :required => "", :type => "text"}
+      
+/       .form-group
+/         %label.col-md-4.control-label{:for => "account_num"} Account Number
+/         .col-md-4
+/           %input#account_num.form-control.input-md{:name => "account_num", :placeholder => "", :required => "", :type => "text"}
+      
+/       .form-group
+/         %label.col-md-4.control-label{:for => "description"} Description
+/         .col-md-6
+/           %input#description.form-control.input-md{:name => "description", :placeholder => "", :required => "", :type => "text"}
+      
+/       .form-group
+/         %label.col-md-4.control-label{:for => "createbutton"}
+/         .col-md-6
+/           %button#createbutton.btn.btn-primary{:name => "createbutton"} Create Account
+/           or
+/           = link_to 'CANCEL', accounts_path

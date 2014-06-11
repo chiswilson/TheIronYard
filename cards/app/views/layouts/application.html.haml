@@ -1,0 +1,33 @@
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    %meta{:content => "", :name => "description"}
+    %meta{:content => "", :name => "author"}
+    %link{:href => "../../assets/ico/favicon.ico", :rel => "shortcut icon"}
+    %title Play MEMORY !
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    .container
+      .div1
+        - if user_signed_in?
+          = render '/layouts/welcome_msg'
+          &nbsp;&nbsp;&nbsp;
+          = link_to "New Game", newgame_path
+          &nbsp; | &nbsp;
+          = link_to('Logout', destroy_user_session_path, :method => :delete)
+          
+          %h4{class: "posted_msg"}
+            Game posted to server
+
+      / %p.notice= notice
+      / %p.alert= alert
+
+              
+      %br
+      = yield

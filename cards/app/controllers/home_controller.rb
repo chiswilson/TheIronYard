@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+	before_action :authenticate_user!
+
 	def index
 	end
 
@@ -17,5 +19,13 @@ class HomeController < ApplicationController
 		@deck.shuffle!
 		render 'index'
 	end
-	
+
+	def addgame
+		guesses = params[:total_guesses]
+		current_user.add_score(guesses)
+		respond_to do |format|
+      	  format.js
+      	end
+	end
+
 end
