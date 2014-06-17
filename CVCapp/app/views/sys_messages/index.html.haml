@@ -1,0 +1,17 @@
+%h1 Listing sys_messages
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @sys_messages.each do |sys_message|
+    %tr
+      %td= link_to 'Show', sys_message
+      %td= link_to 'Edit', edit_sys_message_path(sys_message)
+      %td= link_to 'Destroy', sys_message, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Sys message', new_sys_message_path

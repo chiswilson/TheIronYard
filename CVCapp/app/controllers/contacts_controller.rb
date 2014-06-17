@@ -4,29 +4,21 @@ class ContactsController < ApplicationController
   before_action :set_contact_and_checkid, only: [:show, :edit, :update, :destroy]
   # before_action :check_contact_id, only: [:show, :edit, :update, :destroy]
 
-  def sendmessage
-
-  end
-
   # GET /contacts
   def index
     if current_user.master_admin?
-      @contacts = Contact.all
+      @contacts = Contact.order(:name).where("name like ?", "%#{params[:term]}%")
     elsif current_user.admin? && (current_user.account)
-      @contacts = current_user.account.contacts
+      @contacts = current_user.account.contacts.order(:name).where("name like ?", "%#{params[:term]}%")
     else
       @contacts = []
     end
 
     respond_to do |format|
       format.html {  }
-      format.json { 
-        newcontacts = []
-        @contacts.each do |contact|
-          newcontacts.push(contact.name)
-        end
+      format.json {         
         # render json: @contacts.to_json
-        render json: newcontacts
+        render json: @contacts.map{ |c| {label: c.name, id: c.id} } 
       }
     end
   end
@@ -84,6 +76,8 @@ class ContactsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+# ***********************************************************************************
 
   private
     # Use callbacks to share common setup or constraints between actions.

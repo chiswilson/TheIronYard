@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140604222301) do
+ActiveRecord::Schema.define(version: 20140611193802) do
 
   create_table "accounts", force: true do |t|
     t.string   "account_num"
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(version: 20140604222301) do
     t.string   "name"
     t.integer  "account_id"
     t.string   "misc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sys_messages", force: true do |t|
+    t.string   "contact_id"
+    t.string   "msg"
+    t.string   "from_addr"
+    t.integer  "attempts"
+    t.integer  "from_account_id"
+    t.integer  "from_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

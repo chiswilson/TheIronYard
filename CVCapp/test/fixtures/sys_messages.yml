@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contact_id: MyString
+  msg: MyString
+  from_addr: MyString
+  attempts: 1
+  from_account_id: 1
+  from_user_id: 1
+
+two:
+  contact_id: MyString
+  msg: MyString
+  from_addr: MyString
+  attempts: 1
+  from_account_id: 1
+  from_user_id: 1

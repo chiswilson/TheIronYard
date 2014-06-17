@@ -14,13 +14,16 @@ class ApplicationController < ActionController::Base
     end
 
     def set_session_vars
+        # IF this session variable hasn't been set yet, set it
     	if (not session[:acct_id]) && user_signed_in?
-    		if (current_user.account_id >= 0)
+    		if (current_user.account_id >= 0) # which they all should be!
     			session[:acct_id] = current_user.account_id
     		else
     			session[:acct_id] = -1
     		end
-    		puts "SETTING session var: acct_id"
     	end
+        if (not session[:user_id]) && user_signed_in?
+            session[:user_id] = current_user.id
+        end
     end
 end

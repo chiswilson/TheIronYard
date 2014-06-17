@@ -1,8 +1,9 @@
 %ul.nav.navbar-nav
   %li.active
     = link_to "Home", root_path
-  %li
-    %a{:href => "#about"} About
+  - if user_signed_in?
+    %li
+      = link_to "Send Message", new_sys_message_path
   
   / USERS MENU ************************************** 
   - if user_signed_in?  

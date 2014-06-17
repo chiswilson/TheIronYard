@@ -10,6 +10,13 @@
 	margin-top: 0;
 }
 
+.session-user-id {
+	position: absolute;
+	top: 16;
+	left: 250;
+	margin-top: 0;
+}
+
 .logintype {
 	position: absolute;
 	top: 2;
@@ -44,7 +51,7 @@
 }
 
 .delete_link {
-	color: red;
+	/*color: red;*/
 }
 
 .account-table {

@@ -1,4 +1,9 @@
 Rails.application.configure do
+
+  my_mail_server   = ENV["my_mail_server"]
+  my_mail_user     = ENV["my_mail_user"]
+  my_mail_password = ENV["my_mail_password"]
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -13,9 +18,16 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              my_mail_server,
+    port:                 25,
+    user_name:            my_mail_user,
+    password:             my_mail_password,
+    authentication:       'plain',
+    enable_starttls_auto: true  }
+
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

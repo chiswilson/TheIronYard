@@ -1,19 +1,23 @@
 %div.col-md-6.my-form
   = form_for @contact, html: {class: "form-horizontal"} do |f|
+
+    %fieldset
+      / Form Name
+      %legend Contact
     
-    .form-group
-      = f.label :name, "Contact Name:", class: "col-md-4 control-label"
-      .col-md-4
-        = f.text_field :name, class: "form-control input-md"
+      .form-group
+        = f.label :name, "Contact Name:", class: "col-md-4 control-label"
+        .col-md-4
+          = f.text_field :name, class: "form-control input-md"
     
-    .form-group
-      = f.label :misc, "Misc.:", class: "col-md-4 control-label"
-      .col-md-6
-        = f.text_field :misc, class: "form-control input-md"
+      .form-group
+        = f.label :misc, "Misc.:", class: "col-md-4 control-label"
+        .col-md-6
+          = f.text_field :misc, class: "form-control input-md"
     
-    .form-group
-      .col-md-4
-      .col-md-8
-        = f.submit class: "btn btn-primary"
-        &nbsp; or
-        = link_to 'CANCEL', contacts_path
+      .form-group
+        .col-md-4
+        .col-md-8
+          = f.submit class: "btn btn-primary"
+          &nbsp; or
+          = link_to 'CANCEL', contacts_path

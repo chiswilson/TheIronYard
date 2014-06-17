@@ -2,5 +2,5 @@
 .gitignore
 ./sinatra-lesson/*
 ./nick/*
-./railstemplate/*
+./RailsTemplate/*
 simplestuff.txt

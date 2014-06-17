@@ -6,6 +6,9 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Load application ENV vars and merge with existing ENV vars. Loaded here so can use values in initializers.
+ENV.update YAML.load_file('config/mailservervars.yml')[Rails.env] rescue {}
+
 module RailsApplication
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -20,5 +23,6 @@ module RailsApplication
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.assets.paths << "#{Rails}/vendor/assets/fonts"
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   end
 end

@@ -1,0 +1,28 @@
+%div.col-md-6.my-form
+  = form_for @sys_message, html: {class: "form-horizontal"} do |f|
+
+    %fieldset
+      / Form Name
+      %legend Send a message
+
+      = f.hidden_field :contact_id, value: 0, class: "sel-contact-id"
+
+      / Text input
+      .form-group.ui-widget
+        = label_tag :contact_id_input, "Contact Name:", class: "col-md-4 control-label"
+        .col-md-4
+          = text_field_tag :contact_id_input, "", class: "form-control input-md sendmessage-contact"
+  
+      / Textarea
+      .form-group
+        = f.label :msg, "Message:", class: "col-md-4 control-label"
+        .col-md-8
+          = f.text_area :msg, class: "form-control input-md"
+
+      / Button 
+      .form-group
+        .col-md-4
+        .col-md-8
+          = f.submit "Send", class: "btn btn-primary"
+          &nbsp; or
+          = link_to 'CANCEL', root_path

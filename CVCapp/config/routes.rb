@@ -10,11 +10,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   resources :accounts
-  resources :contacts do
-    collection do
-      get 'sendmessage'
-      end
-  end
+  resources :contacts
+  resources :sys_messages
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

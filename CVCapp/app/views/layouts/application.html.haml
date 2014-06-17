@@ -34,6 +34,8 @@
         / JUST FOR DEBUG
         - if session[:acct_id]
           %h6.session-acct-id (Debug: session acct id: #{session[:acct_id]})
+        - if session[:user_id]
+          %h6.session-user-id (Debug: session user id: #{session[:user_id]})  
 
         - if user_signed_in?
           
